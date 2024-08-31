@@ -1,0 +1,14 @@
+<div class="input-wrapper" [class.is-focused]="isFocused" [class.with-icon]="isSearchProps">
+    <input
+        type="text"
+        [style.backgroundColor]="backgroundProps"
+        [(ngModel)]="valueProps"
+        (focus)="onFocus()"
+        (blur)="onBlur()"
+        (ngModelChange)="onInputChange($event)"
+    />
+    <div *ngIf="isSearchProps" class="search-icon">
+        <ui-icon [icon]="'search'"></ui-icon>
+    </div>
+    <label>{{ labelProps | translate }}</label>
+</div>

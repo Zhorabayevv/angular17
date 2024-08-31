@@ -1,0 +1,48 @@
+.header-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    // border-bottom: 1px solid #e6e6e6;
+    color: #000000d9;
+
+    &__title {
+        display: flex;
+        align-items: center;
+
+        h2 {
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 28px;
+        }
+
+        &-badge {
+            border-radius: 16px;
+            padding: 2px 8px;
+            margin-left: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 18px;
+            background-color: #007aff1a;
+            color: #007aff;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+
+        ::ng-deep {
+            ui-icon {
+                width: 16px;
+                height: 16px;
+                margin-right: 8px;
+
+                i {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        }
+    }
+}

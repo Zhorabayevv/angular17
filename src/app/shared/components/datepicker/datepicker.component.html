@@ -1,0 +1,90 @@
+<div class="datepicker">
+    <label class="datepicker__label">{{ labelProps }}</label>
+
+    <div class="datepicker__input">
+        <input
+            [ngModel]="dateProps | date: 'dd.MM.yyyy'"
+            [dropSpecialCharacters]="false"
+            class="datepicker__date"
+            mask="00.00.0000"
+            placeholder="dd.MM.yyyy"
+            (ngModelChange)="changeDate($event)"
+        />
+    </div>
+
+    <span class="datepicker__button" (click)="showCalendar()">
+        <img src="assets/images/calendar.svg" alt="" />
+    </span>
+</div>
+
+<div *ngIf="switchTemplate.showPicker" class="calendar" (clickOutside)="hideCalendar()">
+    <div class="calendar__title">
+        <span class="calendar__arrow-icon">
+            <img
+                [hidden]="switchTemplate.chooseTemplate"
+                class="flip"
+                src="assets/images/arrow-right.svg"
+                alt="arrow-left"
+                (click)="setDays({ month: currentMonth - 1, year: currentYear })"
+            />
+        </span>
+        <span (click)="choosePeriod()">{{ months[currentMonth] }} {{ currentYear }}</span>
+        <span class="calendar__arrow-icon">
+            <img
+                [hidden]="switchTemplate.chooseTemplate"
+                src="assets/images/arrow-right.svg"
+                alt="arrow-right"
+                (click)="setDays({ month: currentMonth + 1, year: currentYear })"
+            />
+        </span>
+    </div>
+    <div *ngIf="!switchTemplate.chooseTemplate; else chooseTemplate">
+        <ul class="calendar__weekdays">
+            <li *ngFor="let weekday of weekdays" class="weekday">{{ weekday }}</li>
+        </ul>
+        <ul class="calendar__days">
+            <li *ngFor="let empty of emptySpace$ | async" class="day empty"></li>
+            <li
+                *ngFor="let day of days$ | async"
+                [ngClass]="{
+                    'today': compareDates(day, today),
+                    'selected__date': compareDates(dateProps, day)
+                }"
+                class="day"
+                (click)="selectDate(day)"
+            >
+                <span
+                    [ngClass]="{
+                        'today': compareDates(day, today),
+                        'selected': compareDates(dateProps, day)
+                    }"
+                    class="calendar__span"
+                >
+                    {{ day.getDate() }}
+                </span>
+            </li>
+        </ul>
+    </div>
+
+    <ng-template #chooseTemplate>
+        <div *ngIf="switchTemplate.chooseCurrentYear" class="calendar__choose-current">
+            <span
+                *ngFor="let year of years"
+                class="calendar__current year"
+                (click)="setCurrentYear(year)"
+            >
+                {{ year }}
+            </span>
+        </div>
+
+        <div *ngIf="switchTemplate.chooseCurrentMonth" class="calendar__choose-current">
+            <span
+                *ngFor="let month of months; let indx = index"
+                class="calendar__current month"
+                (click)="setCurrentMonth(indx)"
+            >
+                {{ month }}</span
+            >
+        </div>
+    </ng-template>
+</div>

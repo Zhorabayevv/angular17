@@ -1,0 +1,183 @@
+@import 'assets/styles/vars.scss';
+@import 'assets/styles/fonts.scss';
+@import 'assets/styles/mixins.scss';
+@import 'assets/styles/button.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'SFProText';
+}
+
+html {
+    scroll-behavior: smooth;
+    //@media (max-width: 1440px) {
+    //    font-size: calc(1vw / 14.4);
+    //}
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.app {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    // display: flex;
+    // flex-direction: column;
+    // flex: 1 1 auto;
+}
+
+input,
+textarea {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 500;
+    line-height: 1;
+}
+
+img {
+    max-width: 100%;
+}
+
+ol,
+ul {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.container {
+    max-width: 1180px;
+    padding: 0 30px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    margin-bottom: 12px;
+}
+
+.vertical-center {
+    display: flex;
+    align-items: center;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-item {
+    margin-bottom: 12px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.full-width {
+    width: 100%;
+}
+
+.animation-flap {
+    display: grid;
+    grid-template-rows: 0fr;
+
+    overflow: hidden;
+    transition: 0.2s;
+}
+
+.animation-flap__show {
+    grid-template-rows: 1fr;
+}
+
+.spin {
+    animation: spin 1s linear 0s infinite;
+}
+
+ui-form-input,
+ui-password-input {
+    width: 100%;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.wave {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: wave 0.5s linear;
+}
+
+@keyframes wave {
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}

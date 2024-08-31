@@ -1,0 +1,13 @@
+<div class="dropdown" [class.is-open]="isOpenProps">
+    <div *ngIf="withHeaderProps" class="dropdown__header">
+        <div class="dropdown__header-title">
+            {{ titleProps }}
+        </div>
+        <div class="dropdown__header-icon">
+            <ui-icon [icon]="iconProps"></ui-icon>
+        </div>
+    </div>
+    <div class="dropdown__content">
+        <ng-content></ng-content>
+    </div>
+</div>

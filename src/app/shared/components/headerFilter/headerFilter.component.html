@@ -1,0 +1,9 @@
+<div class="header-filter">
+    <div class="header-filter__title">
+        <h2>{{ titleProps }}</h2>
+        <div *ngIf="badgeProps" class="header-filter__title-badge">{{ badgeProps }}</div>
+    </div>
+    <div class="header-filter__actions">
+        <ng-content></ng-content>
+    </div>
+</div>

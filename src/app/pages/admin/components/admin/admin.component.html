@@ -1,0 +1,39 @@
+<section class="page-admin">
+    <h1>Admin!</h1>
+    <a [routerLink]="['/suppliers']">Go to Home</a>
+
+    <div>
+        <form [formGroup]="testForm" style="width: 500px; margin: 50px">
+            <div class="row">
+                <!-- [mask]="masks.phone.mask"
+                [phoneMask]="true" -->
+                <ui-form-input
+                    [placeholder]="'Test label input' | translate"
+                    [value]="testForm.get('test_input')"
+                ></ui-form-input>
+            </div>
+
+            <div class="row">
+                <ui-select
+                    [label]="'Test label select' | translate"
+                    [value]="testForm.get('test_select')"
+                ></ui-select>
+            </div>
+            <div class="row">
+                <ui-multi-select
+                    [label]="'Test label multi select' | translate"
+                    [value]="testForm.get('test_multi_select')"
+                ></ui-multi-select>
+            </div>
+
+            <div class="form-actions">
+                <button class="main-btn btn-primary" [disabled]="testForm.invalid">
+                    {{ 'submit' | translate }}
+                </button>
+                <button class="main-btn btn-secondary" (click)="cancel()">
+                    {{ 'cancel' | translate }}
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

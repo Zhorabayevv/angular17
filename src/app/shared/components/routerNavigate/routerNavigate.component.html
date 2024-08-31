@@ -1,0 +1,14 @@
+<div class="router-navigate">
+    <div class="router-navigate__route">
+        <div [routerLink]="['/suppliers']">{{ 'Главная' | translate }}</div>
+
+        <div *ngIf="routers.length > 0" class="forwardslash">/</div>
+    </div>
+    <div *ngFor="let route of routers; let last = last" class="router-navigate__route">
+        <div [routerLink]="['/' + route.link]" routerLinkActive="active">
+            {{ route.name | translate }}
+        </div>
+
+        <div *ngIf="!last" class="forwardslash">/</div>
+    </div>
+</div>

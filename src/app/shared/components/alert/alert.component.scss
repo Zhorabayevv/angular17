@@ -1,0 +1,103 @@
+.alerts {
+    position: absolute;
+    top: 70px;
+    right: 50px;
+    z-index: 1000;
+
+    .alert {
+        display: flex;
+        max-width: 354px;
+        border-radius: 13px;
+        min-height: 60px;
+        box-shadow: 0px 10px 25px 0px rgba(68, 68, 68, 0.2);
+        margin-bottom: 10px;
+        transition:
+            margin-bottom 0.3s ease-in-out,
+            transform 0.3s ease-in-out;
+
+        &.alert-success {
+            .alert__icon {
+                color: #28cd41;
+                background-color: #28cd411a;
+            }
+
+            background-color: #28cd41;
+        }
+
+        &.alert-danger {
+            .alert__icon {
+                color: #ff3b30;
+                background-color: #ff3b301a;
+            }
+
+            background-color: #ff3b30;
+        }
+
+        &.alert-warning {
+            .alert__icon {
+                color: #fcca00;
+                background-color: #fcca001a;
+            }
+
+            background-color: #fcca00;
+        }
+
+        &__icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            border-radius: 6px;
+
+            ui-icon {
+                height: 18px;
+            }
+        }
+
+        &-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 58px;
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 8px 12px;
+        }
+
+        &__message {
+            width: 245px;
+            font-size: 16px;
+            font-weight: 400;
+            color: #6f727a;
+
+            &-title {
+                font-size: 14px;
+                line-height: 22px;
+                font-weight: 500;
+                color: #000000d9;
+            }
+
+            &-text {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+
+        &__close {
+            display: flex;
+            align-items: baseline;
+            padding: 8px;
+            cursor: pointer;
+
+            ui-icon {
+                ::ng-deep i {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        }
+    }
+}

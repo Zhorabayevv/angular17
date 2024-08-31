@@ -1,0 +1,59 @@
+<ng-container *ngIf="modal$ | async as modal">
+    <div class="modal modal-open" (click)="closeModal()">
+        <div class="modal__content" (click)="$event.stopPropagation()">
+            <ui-icon
+                *ngIf="modal.closeIcon"
+                class="modal__close-icon"
+                icon="xmark"
+                (click)="closeModal()"
+            ></ui-icon>
+
+            <div *ngIf="modal.title && !modal.img" class="modal__title">
+                <p>{{ modal.title }}</p>
+            </div>
+
+            <div *ngIf="modal.img && modal.title" class="modal__item">
+                <div [ngStyle]="styleObject(modal.img)" class="modal__item-icon"></div>
+                <p class="modal__item-title">{{ modal.title }}</p>
+
+                <span class="modal__item-text">
+                    {{ modal.text }}
+                </span>
+            </div>
+
+            <div *ngIf="elements$ | async as elements">
+                <form
+                    *ngIf="form$ | async as form"
+                    [formGroup]="form"
+                    [ngStyle]="{ 'height': elements.length * 70 + 'px' }"
+                    class="modal__form"
+                >
+                    <ng-container *ngFor="let element of elements">
+                        <ng-container
+                            *ngComponentOutlet="element.component; inputs: element.properties!"
+                        ></ng-container>
+                    </ng-container>
+                </form>
+            </div>
+
+            <div *ngIf="modal.button" [ngClass]="{ 'smaller': modal.form }" class="modal__buttons">
+                <ui-button
+                    type="secondary"
+                    [label]="secondaryBtn | translate"
+                    class="modal__buttons-btn"
+                    (click)="closeModal()"
+                ></ui-button>
+                <ui-button
+                    [type]="modal.button.type"
+                    [label]="modal.button.name"
+                    class="modal__buttons-btn"
+                    (click)="performAction()"
+                ></ui-button>
+            </div>
+
+            <div *ngIf="modal.dontAsk" class="modal__checkbox">
+                <ui-checkbox label="Больше не спрашивать"></ui-checkbox>
+            </div>
+        </div>
+    </div>
+</ng-container>

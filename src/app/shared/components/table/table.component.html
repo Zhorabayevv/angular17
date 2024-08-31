@@ -1,0 +1,126 @@
+<div class="table-container">
+    <table class="header-table">
+        <thead>
+            <tr>
+                <th *ngIf="withSelectRowProps">
+                    <ui-checkbox
+                        [isChecked]="isSelectedAllRows"
+                        [activeMinus]="
+                            selectedRowsData.length > 0 &&
+                            selectedRowsData.length < tableRowsDataProps.length &&
+                            !isSelectedAllRows
+                        "
+                        (checkboxToggle)="selectedAllRows()"
+                    ></ui-checkbox>
+                </th>
+                <th
+                    *ngFor="let row of tableRowsProps; let i = index"
+                    [ngStyle]="{
+                        'max-width.px': row.width,
+                        'min-width.px': row.width
+                    }"
+                >
+                    <div class="header-block">
+                        {{ row.label }}
+                        <ui-icon
+                            [class.is-active]="filters[row.key]"
+                            [icon]="'menu-alt'"
+                            (click)="toggleFilter(i)"
+                        ></ui-icon>
+                    </div>
+                    <ui-dropdown
+                        [style.width.px]="row.width"
+                        [isOpen]="isShowFilter[i]"
+                        (clickOutside)="closeFilter(i)"
+                    >
+                        <div class="filter-dropdown">
+                            <div [ngSwitch]="row.filterType" class="filter-dropdown-content">
+                                <ui-input
+                                    *ngSwitchCase="'input'"
+                                    [label]="row.label"
+                                    [value]="filters[row.key]"
+                                    (valueChange)="onFilter(row.key, $event)"
+                                >
+                                </ui-input>
+                                <ui-checkbox
+                                    *ngSwitchCase="'toggler'"
+                                    [label]="row.label"
+                                    [isChecked]="filters[row.key]"
+                                    (checkboxToggle)="onFilter(row.key, $event)"
+                                ></ui-checkbox>
+                            </div>
+                            <div class="filter-dropdown-actions">
+                                <button
+                                    class="main-btn btn-secondary"
+                                    (click)="clearFilter(i, row.key)"
+                                >
+                                    <ui-icon [icon]="'refresh-ccw-alt'"></ui-icon>
+                                    {{ 'Очистить' | translate }}
+                                </button>
+                                <button class="main-btn btn-primary" (click)="closeFilter(i)">
+                                    {{ 'Применить' | translate }}
+                                </button>
+                            </div>
+                        </div>
+                    </ui-dropdown>
+                </th>
+                <th class="full-width"></th>
+                <th *ngIf="withActionsProps" class="action-col"></th>
+            </tr>
+        </thead>
+    </table>
+
+    <ng-container *ngIf="filteredTableRowsData.length; else noDataTemplate">
+        <table class="body-table">
+            <tbody>
+                <tr *ngFor="let data of filteredTableRowsData">
+                    <td *ngIf="withSelectRowProps">
+                        <ui-checkbox
+                            [isChecked]="selectedRowData(data.id)"
+                            (click)="selectRow(data)"
+                        ></ui-checkbox>
+                    </td>
+
+                    <td
+                        *ngFor="let row of tableRowsProps"
+                        [ngStyle]="{
+                            'max-width.px': row.width,
+                            'min-width.px': row.width
+                        }"
+                    >
+                        <ng-container [ngSwitch]="row.key">
+                            <span *ngSwitchCase="'phone'"
+                                >{{ data[row.key] | phoneNumberFormat }}
+                            </span>
+                            <div
+                                *ngSwitchCase="'isActive'"
+                                [ngClass]="{ 'is-active': data[row.key] }"
+                                class="is-active-col"
+                            >
+                                <div class="is-active-dot"></div>
+                                {{ isActiveText(data[row.key]) }}
+                            </div>
+                            <span
+                                *ngSwitchDefault
+                                [ngClass]="{ 'bold-text': row.textType === 'bold' }"
+                                [title]="data[row.key]"
+                                >{{ data[row.key] }}</span
+                            >
+                        </ng-container>
+                    </td>
+
+                    <td class="full-width"></td>
+
+                    <td *ngIf="withActionsProps" class="action-col center">
+                        <div class="action-col__icon">
+                            <ui-icon [icon]="'dots-vertical'"></ui-icon>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+    <ng-template #noDataTemplate>
+        <div class="no-data">{{ 'no-data' | translate }}</div>
+    </ng-template>
+</div>

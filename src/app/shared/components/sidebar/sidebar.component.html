@@ -1,0 +1,87 @@
+<nav [class.short-menu]="!isMenuOpenProps" class="sidebar">
+    <div class="sidebar-content">
+        <div class="sidebar-content__header" [routerLink]="'./suppliers'">
+            <div class="sidebar-content__header-logo">
+                <img src="assets/images/logo.webp" alt="logo" />
+            </div>
+            <h2 *ngIf="isMenuOpenProps" class="sidebar-content__header-title">
+                {{ 'Title project' | translate }}
+            </h2>
+        </div>
+
+        <div class="sidebar-content__search">
+            <ng-container *ngIf="isMenuOpenProps; else iconSearchTemplate">
+                <ui-input
+                    [label]="'search'"
+                    [isSearch]="true"
+                    [background]="'#0000000D'"
+                    [(value)]="searchValue"
+                ></ui-input>
+            </ng-container>
+            <ng-template #iconSearchTemplate>
+                <div class="search-block"><ui-icon [icon]="'search'"> </ui-icon></div>
+            </ng-template>
+        </div>
+
+        <div class="sidebar-content__menu">
+            <p class="sidebar-content__menu-title">
+                <ng-container *ngIf="isMenuOpenProps">
+                    {{ 'Меню' | translate }}
+                </ng-container>
+            </p>
+
+            <ul>
+                <ng-container *ngFor="let item of menuItems; let i = index">
+                    <li class="sidebar-content__menu-item" routerLinkActive="active">
+                        <a [routerLink]="item?.link">
+                            <div class="center">
+                                <div class="item-icon">
+                                    <ui-icon [icon]="item.icon"></ui-icon>
+                                    <div *ngIf="item.badge" class="item-icon__badge"></div>
+                                </div>
+
+                                <div *ngIf="isMenuOpenProps">
+                                    {{ item.label | translate }}
+                                </div>
+                            </div>
+
+                            <div *ngIf="item.children && isMenuOpenProps" class="chevron-down">
+                                <img src="assets/icons/chevron-down.svg" alt="" />
+                            </div>
+                        </a>
+                    </li>
+                    <hr *ngIf="i === 3" />
+                </ng-container>
+            </ul>
+        </div>
+    </div>
+
+    <div [class.active-profile]="activeProfileProps" class="sidebar__footer">
+        <div class="sidebar__footer-content" (click)="openProfile()">
+            <div class="user-img">
+                <img src="assets/images/user-photo.webp" alt="user-logo" />
+            </div>
+            <div *ngIf="isMenuOpenProps" class="user-content">
+                <strong class="user-content__title" [title]="userContent.name">{{
+                    userContent.name
+                }}</strong>
+                <p class="user-content__email" [title]="userContent.email">
+                    {{ userContent.email }}
+                </p>
+            </div>
+        </div>
+
+        <div *ngIf="isMenuOpenProps" class="sidebar__footer-action" (click)="logout()">
+            <ui-icon icon="arrow-right-from-bracket" />
+        </div>
+    </div>
+</nav>
+
+<!--  -->
+<div
+    [style.transform]="isMenuOpenProps ? '' : 'rotate(180deg)'"
+    style="position: absolute; top: 20px; right: -20px; cursor: pointer; transition: 0.3s ease all"
+    (click)="menuToggler()"
+>
+    <ui-icon [icon]="'arrow-left'"> </ui-icon>
+</div>

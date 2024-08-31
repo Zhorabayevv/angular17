@@ -1,0 +1,73 @@
+.button {
+    box-shadow:
+        0px 0px 0px 0.5px #0000000d,
+        0px 1px 2.5px 0px #1941853d;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 12px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+
+    &.btn-primary {
+        color: #fff;
+        background: linear-gradient(0deg, #194185, #194185),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
+        box-shadow:
+            0px 0px 0px 0.5px rgba(25, 65, 133, 0.12),
+            0px 1px 2.5px 0px rgba(25, 65, 133, 0.24);
+
+        &:hover {
+            color: #000000d9;
+            background: linear-gradient(0deg, rgba(25, 65, 133, 0.1), rgba(25, 65, 133, 0.1)),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        &:disabled {
+            background: linear-gradient(0deg, #606c81, #606c81),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+    }
+
+    &.btn-secondary {
+        color: #000;
+        box-shadow:
+            0px 0px 0px 0.5px rgba(0, 0, 0, 0.05),
+            0px 0.5px 2.5px 0px rgba(0, 0, 0, 0.3);
+
+        &:disabled {
+            background: linear-gradient(0deg, #e7e7e7, #e7e7e7),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+    }
+
+    &.btn-danger {
+        color: #fff;
+        background: linear-gradient(0deg, #ff3b30, #ff3b30),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
+        box-shadow:
+            0px 0px 0px 0.5px rgba(25, 65, 133, 0.12),
+            0px 1px 2.5px 0px rgba(25, 65, 133, 0.24);
+
+        &:disabled {
+            background: linear-gradient(0deg, #ffa7a2, #ffa7a2),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        color: #b6b6b6;
+    }
+
+    &__icon {
+        display: flex;
+        width: 16px;
+        height: 16px;
+        margin-right: 10px;
+
+        i {
+            width: 16px !important;
+            height: 16px !important;
+        }
+    }
+}

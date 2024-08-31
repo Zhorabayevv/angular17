@@ -1,0 +1,148 @@
+<div class="auth">
+    <div class="auth__content">
+        <img src="assets/images/brand.png" alt="brand" />
+        <h3 class="auth__content-title">{{ title }}</h3>
+
+        <ng-container [ngSwitch]="isContentType">
+            <ng-container *ngSwitchCase="'auth'">
+                <ui-tab-filter
+                    class="auth__content-tabs"
+                    [tabs]="tabs"
+                    (selectedTabCode)="selectTab($event)"
+                ></ui-tab-filter>
+
+                <form [formGroup]="authForm" class="auth__content-form">
+                    <ng-container [ngSwitch]="selectedTabCode">
+                        <ng-container *ngSwitchCase="'phone'">
+                            <div class="row">
+                                <ui-form-input
+                                    [placeholder]="'Телефон' | translate"
+                                    [value]="authForm.get('phone')"
+                                    [mask]="'+0 (000) 000-00-00'"
+                                    [phoneMask]="true"
+                                ></ui-form-input>
+                            </div>
+                        </ng-container>
+
+                        <ng-container *ngSwitchCase="'email'">
+                            <div class="row">
+                                <ui-form-input
+                                    [placeholder]="'Почта' | translate"
+                                    [value]="authForm.get('email')"
+                                ></ui-form-input>
+                            </div>
+                        </ng-container>
+                    </ng-container>
+
+                    <div class="row">
+                        <ui-password-input
+                            [placeholder]="'Пароль' | translate"
+                            [value]="authForm.get('password')"
+                        ></ui-password-input>
+                    </div>
+
+                    <div class="row forget-row">
+                        <a> {{ 'Забыли пароль?' | translate }}</a>
+
+                        <ui-checkbox
+                            [label]="'Запомнить меня' | translate"
+                            [isChecked]="authForm.get('rememberMe')?.value"
+                            (checkboxToggle)="rememberMeToggle($event, 'rememberMe')"
+                        ></ui-checkbox>
+                    </div>
+                </form>
+
+                <div class="auth__content-actions">
+                    <button class="main-btn btn-primary eds-btn" (click)="edsLogin()">
+                        <ui-icon [icon]="'eds-key'"></ui-icon>
+                        {{ 'ЭЦП' | translate }}
+                    </button>
+                    <button
+                        class="main-btn btn-primary"
+                        [disabled]="authForm.invalid"
+                        (click)="login('auth')"
+                    >
+                        {{ 'Войти' | translate }}
+                    </button>
+                </div>
+
+                <div class="navigate-reg">
+                    <span>{{ 'Нет аккаунта?' | translate }}</span>
+                    <a (click)="toggleRegister('register')">
+                        {{ 'Зарегистрироваться' | translate }}</a
+                    >
+                </div>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'register'">
+                <form [formGroup]="authForm" class="auth__content-form">
+                    <div class="row">
+                        <ui-form-input
+                            [placeholder]="'Почта' | translate"
+                            [value]="authForm.get('email')"
+                        ></ui-form-input>
+                    </div>
+
+                    <div class="row">
+                        <ui-password-input
+                            [placeholder]="'Пароль' | translate"
+                            [value]="authForm.get('password')"
+                        ></ui-password-input>
+                    </div>
+
+                    <div class="row">
+                        <ui-password-input
+                            [placeholder]="'Введите пароль ещё раз' | translate"
+                            [value]="authForm.get('confirmPassword')"
+                        ></ui-password-input>
+                    </div>
+
+                    <div class="row forget-row">
+                        <ui-checkbox
+                            [label]="
+                                'Ознакомлен и согласен с условиями пользовательского соглашения'
+                                    | translate
+                            "
+                            [isChecked]="authForm.get('agreeTerms')?.value"
+                            (checkboxToggle)="rememberMeToggle($event, 'agreeTerms')"
+                        ></ui-checkbox>
+                    </div>
+                </form>
+
+                <div class="auth__content-actions">
+                    <button
+                        class="main-btn btn-primary"
+                        [disabled]="authForm.invalid"
+                        (click)="login('register')"
+                    >
+                        {{ 'Продолжить' | translate }}
+                    </button>
+                </div>
+
+                <div class="navigate-reg">
+                    <span>{{ 'Уже есть аккаунт?' | translate }}</span>
+                    <a (click)="toggleRegister('auth')"> {{ 'Войти' | translate }}</a>
+                </div>
+            </ng-container>
+
+            <ng-container *ngSwitchCase="'success-reg'">
+                <div class="success-reg-text">
+                    {{
+                        'На указанный в форме электронный адрес придетзапрос на подтверждение регистрации'
+                            | translate
+                    }}
+                </div>
+
+                <div class="auth__content-actions">
+                    <button class="main-btn btn-primary" (click)="login('success-reg')">
+                        {{ 'Вернуться в авторизацию' | translate }}
+                    </button>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+    <img src="assets/images/dots_light.png" class="auth__dots-light" />
+    <img src="assets/images/dots_dark.png" class="auth__dots-dark" />
+    <img src="assets/images/background-lines1.webp" class="auth__lines-top" />
+    <img src="assets/images/background-lines2.webp" class="auth__lines-bottom" />
+</div>

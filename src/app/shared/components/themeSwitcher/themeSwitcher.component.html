@@ -1,0 +1,16 @@
+<div
+    [ngClass]="{ 'light': lightProps, 'dark': !lightProps, 'default': default }"
+    class="theme-switcher"
+    (click)="changeTheme()"
+>
+    <div
+        [ngClass]="{ 'toLight': lightProps, 'toDark': !lightProps, 'default': default }"
+        class="circle"
+    ></div>
+    <span class="theme-switcher__span">
+        <img class="theme-switcher__icon" src="assets/images/switch_light.svg" alt="" />
+    </span>
+    <span class="theme-switcher__span">
+        <img class="theme-switcher__icon" src="assets/images/switch_dark.svg" alt="" />
+    </span>
+</div>

@@ -1,0 +1,41 @@
+<div class="select" (clickOutside)="onClickOutside()">
+    <div
+        class="select__header"
+        [class.is-open]="isOpen"
+        [class.is-invalid]="valueProps?.invalid && isTouched"
+        (click)="toggleSelect()"
+    >
+        <div>
+            {{ selectedValue?.name }}
+        </div>
+        <label [class.is-active]="selectedValue">{{ labelProps }}</label>
+        <div class="select__header-actions">
+            <ng-container *ngIf="selectedValue">
+                <ui-icon class="clear-value" [icon]="'xmark'" (click)="clearValue()"></ui-icon>
+                |
+            </ng-container>
+
+            <img class="chevron-down" src="assets/icons/chevron-down.svg" alt="" />
+        </div>
+    </div>
+
+    <div class="select__dropdown" [class.is-open-dropdown]="isOpen">
+        <ul>
+            <li
+                *ngFor="let item of testList"
+                class="select__dropdown-item"
+                [class.is-selected]="item === selectedValue"
+                (click)="selectedItem(item)"
+            >
+                {{ item.name }}
+
+                <ui-icon *ngIf="item === selectedValue" [icon]="'check'"></ui-icon>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<ui-validation-error
+    [isTouched]="isTouched"
+    [validatedErrors]="valueProps?.errors || null"
+></ui-validation-error>

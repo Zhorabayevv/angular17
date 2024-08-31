@@ -1,0 +1,23 @@
+.main {
+    display: flex;
+    height: 100%;
+
+    .sidebar-block {
+        position: fixed;
+        height: 100%;
+    }
+
+    .content-block {
+        width: 100%;
+        padding-left: 260px;
+        transition: padding-left 0.3s ease-in-out;
+
+        &.short-menu-content {
+            padding-left: 76px;
+        }
+
+        &.without-menu {
+            padding-left: 0;
+        }
+    }
+}

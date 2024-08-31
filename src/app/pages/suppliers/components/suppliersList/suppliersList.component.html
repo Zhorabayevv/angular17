@@ -1,0 +1,50 @@
+<div class="suppliers-list">
+    <ui-table-wrapper>
+        <ui-header-filter [title]="'Поставщики' | translate" [badge]="'обновлено 06.05.2024'">
+            <div class="vertical-center" style="margin-right: 12px; padding: 10px 12px">
+                <ui-icon style="width: 16px" [icon]="'menu-alt'"></ui-icon>
+                {{ 'Фильтры' | translate }}
+            </div>
+            <div class="vertical-center" style="margin-right: 12px; padding: 10px 12px">
+                <ui-icon [icon]="'trash'"></ui-icon>
+                {{ 'Удалить' | translate }}
+            </div>
+            <button class="main-btn btn-secondary" style="margin-right: 12px">
+                <ui-icon [icon]="'memo-check'"></ui-icon>
+                {{ 'Сформировать отчет' | translate }}
+            </button>
+
+            <ui-button
+                [type]="'primary'"
+                [icon]="'plus'"
+                [label]="'Добавить поставщика' | translate"
+            ></ui-button>
+        </ui-header-filter>
+
+        <div class="tab-search-filter">
+            <ui-tab-filter [tabs]="tabs" (selectedTabCode)="selectedTab($event)"></ui-tab-filter>
+
+            <div class="input-block">
+                <ui-input [label]="'search'" [isSearch]="true"></ui-input>
+            </div>
+        </div>
+
+        <ng-container *ngIf="!loading; else loadingTemplate">
+            <div class="loading-content">
+                <div class="loading-wrapper">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </ng-container>
+        <ng-template #loadingTemplate>
+            <ui-table
+                [tableName]="'suppliers'"
+                [withSelectRow]="true"
+                [tableRows]="tableRows"
+                [tableRowsData]="tableRowsData"
+                (selectedRows)="selectedRows($event)"
+                (changedFilters)="changedFilters($event)"
+            ></ui-table>
+        </ng-template>
+    </ui-table-wrapper>
+</div>

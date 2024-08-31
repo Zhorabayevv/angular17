@@ -1,0 +1,92 @@
+.form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-top: 20px;
+
+    .main-btn {
+        margin-right: 12px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.main-btn {
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 12px;
+    border-radius: 12px;
+
+    ui-icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 10px;
+
+        i {
+            width: 16px !important;
+            height: 16px !important;
+        }
+    }
+}
+
+.btn-primary {
+    transition: 0.2s;
+    box-shadow: 0px 1px 2.5px 0px #1941853d;
+    color: #fff;
+    background: linear-gradient(0deg, #194185, #194185),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
+
+    &:hover {
+        color: #000000d9;
+        background: linear-gradient(0deg, rgba(25, 65, 133, 0.1), rgba(25, 65, 133, 0.1)),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    &:disabled {
+        color: #00000040;
+        background: #f2f2f2;
+    }
+}
+
+.btn-danger {
+    box-shadow:
+        0px 0px 0px 0.5px #0000000d,
+        0px 1px 2.5px 0px #1941853d;
+    color: #fff;
+    background-size: 100% 200%;
+    transition:
+        color 0.2s ease-in-out,
+        background-position 0.2s ease-in-out;
+    background: linear-gradient(0deg, #ff3b30, #ff3b30),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
+
+    &:hover {
+        color: #000000d9;
+        background-position: 0 100%;
+        background: linear-gradient(0deg, rgba(25, 65, 133, 0.1), rgba(25, 65, 133, 0.1)),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    &:disabled {
+        color: #00000040;
+        background: #f2f2f2;
+    }
+}
+
+.btn-secondary {
+    color: #000000d9;
+    box-shadow: 0px 0.5px 2.5px 0px #0000004d;
+
+    &:hover {
+        color: #000000d9;
+        background: linear-gradient(0deg, rgba(25, 65, 133, 0.1), rgba(25, 65, 133, 0.1)),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    &:disabled {
+        color: #00000040;
+        background: #f2f2f2;
+    }
+}

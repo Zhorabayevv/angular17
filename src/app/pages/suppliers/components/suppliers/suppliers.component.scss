@@ -1,0 +1,43 @@
+.suppliers {
+    padding: 0 32px;
+
+    .url-tabs {
+        padding: 16px 24px;
+        border-radius: 0 0 12px 12px;
+        box-shadow:
+            0px 0px 0px 0.5px #0000000d,
+            0px 0.5px 2.5px 0px #0000004d;
+
+        &__content {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #e6e6e6;
+
+            &-item {
+                display: flex;
+                align-items: center;
+                min-width: fit-content;
+                padding-bottom: 8px;
+                margin-right: 24px;
+                height: 32px;
+                font: 400 16px/24px 'Noto Sans';
+                cursor: pointer;
+                color: #667085;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                &.active-tab {
+                    color: #007aff;
+                    margin-bottom: -1px;
+                    border-bottom: 2px solid #007aff;
+                }
+            }
+        }
+    }
+
+    &__content {
+        margin-top: 24px;
+    }
+}

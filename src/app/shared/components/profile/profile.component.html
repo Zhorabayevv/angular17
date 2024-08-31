@@ -1,0 +1,130 @@
+<div *ngIf="isOpenProps" class="profile" (click)="closeDrawer()">
+    <div #drawerContent @contentState class="profile-content" (click)="$event.stopPropagation()">
+        <div>
+            <div class="profile-content__header">
+                <h3>{{ 'Мой профиль' | translate }}</h3>
+                <div class="close-icon" (click)="closeDrawer()">
+                    <ui-icon [icon]="'xmark'"></ui-icon>
+                </div>
+            </div>
+
+            <div class="profile-content__tabs">
+                <ui-tab-filter
+                    [tabs]="tabs"
+                    (selectedTabCode)="selectedTab($event)"
+                ></ui-tab-filter>
+            </div>
+
+            <div *ngIf="selectedGeneralTab" class="profile-content__info profile-container">
+                <div class="user-img">
+                    <img [src]="userContent.image" alt="user-img" />
+                </div>
+                <div class="user-content">
+                    <strong class="user-content__title" [title]="userContent.name">
+                        {{ userContent.name }}
+                    </strong>
+                    <p class="user-content__email" [title]="userContent.email">
+                        {{ userContent.email }}
+                    </p>
+                    <div class="form-actions">
+                        <button class="main-btn btn-secondary">
+                            {{ 'Изменить фото' | translate }}
+                        </button>
+                        <button class="main-btn btn-danger">{{ 'Удалить' | translate }}</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-content__form profile-container">
+                <form [formGroup]="profileForm">
+                    <ng-container *ngIf="!selectedGeneralTab; else generalTabTemplate">
+                        <div class="form-item">
+                            <ui-password-input
+                                [placeholder]="'Текущий пароль' | translate"
+                                [value]="profileForm.get('password')"
+                            ></ui-password-input>
+                        </div>
+                        <div class="form-item">
+                            <ui-password-input
+                                [placeholder]="'Новый пароль' | translate"
+                                [value]="profileForm.get('newPassword')"
+                            ></ui-password-input>
+                        </div>
+                        <div class="form-item">
+                            <ui-password-input
+                                [placeholder]="'Введите новый пароль ещё раз' | translate"
+                                [value]="profileForm.get('confirmPassword')"
+                            ></ui-password-input>
+                        </div>
+                    </ng-container>
+                    <ng-template #generalTabTemplate>
+                        <div *ngIf="masks.iin.pattern" class="form-item">
+                            <ui-form-input
+                                [placeholder]="'ИИН' | translate"
+                                [value]="profileForm.get('iin')"
+                                [mask]="masks.iin.mask"
+                                [patterns]="masks.iin.pattern"
+                            ></ui-form-input>
+                        </div>
+
+                        <div class="form-item">
+                            <ui-form-input
+                                [placeholder]="'Фамилия' | translate"
+                                [value]="profileForm.get('lastname')"
+                            ></ui-form-input>
+                        </div>
+
+                        <div class="form-item">
+                            <ui-form-input
+                                [placeholder]="'Имя' | translate"
+                                [value]="profileForm.get('firstname')"
+                            ></ui-form-input>
+                        </div>
+
+                        <div class="form-item">
+                            <ui-form-input
+                                [placeholder]="'Отчество' | translate"
+                                [value]="profileForm.get('middlename')"
+                            ></ui-form-input>
+                        </div>
+
+                        <div class="form-item">
+                            <ui-form-input
+                                [placeholder]="'Логин' | translate"
+                                [value]="profileForm.get('login')"
+                                [readonly]="true"
+                                [disabled]="true"
+                            ></ui-form-input>
+                        </div>
+
+                        <div class="form-item">
+                            <ui-form-input
+                                [placeholder]="'Email' | translate"
+                                [value]="profileForm.get('email')"
+                            ></ui-form-input>
+                        </div>
+
+                        <div class="form-item">
+                            <ui-form-input
+                                [placeholder]="'Телефон' | translate"
+                                [value]="profileForm.get('phone')"
+                                [mask]="masks.phone.mask"
+                                [phoneMask]="true"
+                            ></ui-form-input>
+                        </div>
+                    </ng-template>
+                </form>
+            </div>
+        </div>
+
+        <div class="profile-content__action">
+            <button
+                class="main-btn btn-primary"
+                [disabled]="profileForm.invalid"
+                (click)="submitForm()"
+            >
+                {{ 'Сохранить' | translate }}
+            </button>
+        </div>
+    </div>
+</div>

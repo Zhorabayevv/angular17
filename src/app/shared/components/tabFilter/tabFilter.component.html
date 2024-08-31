@@ -1,0 +1,10 @@
+<div class="tabs">
+    <div
+        *ngFor="let tab of tabsProps"
+        class="tab"
+        [class.is-active]="tab.code === selectedTabCode"
+        (click)="selectTab(tab.code)"
+    >
+        {{ tab.name | translate }}
+    </div>
+</div>

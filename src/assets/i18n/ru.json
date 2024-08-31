@@ -1,0 +1,12 @@
+{
+    "hello": "Привет",
+    "search": "Поиск",
+    "suppliers": "Поставщики",
+    "notification": "Уведомление",
+    "settings": "Настройки",
+    "submit": "Сохранить",
+    "cancel": "Отмена",
+    "select_all": "Выбрать все",
+    "is_active": "Активный",
+    "is_not_active": "Неактивный"
+}

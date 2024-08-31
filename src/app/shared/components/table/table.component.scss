@@ -1,0 +1,185 @@
+@import 'src/assets/styles/mixins.scss';
+
+// .table-wrapper {
+//     position: relative;
+
+.table-container {
+    display: block;
+    overflow: auto;
+    max-height: 600px;
+    min-height: 200px;
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    margin-bottom: 22px;
+
+    @include scrollbar;
+
+    .header-table {
+        table-layout: fixed;
+        border-collapse: collapse;
+        position: sticky;
+        top: 0;
+        background-color: #fcfcfd;
+        z-index: 21;
+
+        th {
+            position: relative;
+            border-bottom: 1px solid #e6e6e6;
+            padding: 13px 12px;
+            color: #00000080;
+
+            .header-block {
+                display: flex;
+                align-items: center;
+                font-size: 12px;
+                font-weight: 500;
+                line-height: 18px;
+
+                ui-icon {
+                    margin-left: 5px;
+                    height: 16px;
+                    cursor: pointer;
+
+                    &.is-active {
+                        color: #007aff;
+                    }
+
+                    ::ng-deep i {
+                        width: 16px;
+                        height: 16px;
+                    }
+                }
+            }
+
+            .filter-dropdown {
+                &-content {
+                    padding: 10px;
+                }
+
+                &-actions {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 10px;
+                }
+            }
+
+            &:first-child,
+            &:last-child {
+                position: sticky;
+                right: 0;
+                z-index: 20;
+            }
+        }
+    }
+
+    .action-col {
+        max-width: 72px;
+        min-width: 72px;
+        position: sticky;
+        right: 0;
+        z-index: 10;
+
+        &__icon {
+            background-color: #fcfcfd;
+            transform: rotate(-45deg);
+            width: 20px;
+            height: 20px;
+
+            ui-icon {
+                cursor: pointer;
+
+                ::ng-deep {
+                    i {
+                        transform: rotate(45deg);
+                    }
+                }
+            }
+
+            &:hover {
+                box-shadow:
+                    rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+                    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+            }
+        }
+    }
+
+    .body-table {
+        table-layout: fixed;
+        border-collapse: collapse;
+
+        tbody {
+            tr {
+                color: #00000080;
+                border-bottom: 1px solid #e6e6e6;
+
+                &:first-child {
+                    border-top: none;
+                }
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+                td {
+                    padding: 13px 12px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    font-size: 14px;
+                    font-weight: 400;
+
+                    .is-active-col {
+                        display: flex;
+                        align-items: center;
+                        width: fit-content;
+                        border-radius: 16px;
+                        padding: 2px 8px;
+                        background-color: #f2f4f7;
+                        color: #00000080;
+
+                        &.is-active {
+                            background-color: #28cd411a;
+                            color: #28cd41;
+
+                            .is-active-dot {
+                                background-color: #28cd41;
+                            }
+                        }
+
+                        .is-active-dot {
+                            width: 8px;
+                            height: 8px;
+                            border-radius: 50%;
+                            background-color: #00000080;
+                            margin-right: 5px;
+                        }
+                    }
+
+                    .bold-text {
+                        color: #101828;
+                        font-weight: 500;
+                    }
+
+                    &:first-child,
+                    &:last-child {
+                        position: sticky;
+                        right: 0;
+                        // background-color: #fff;
+                        z-index: 10;
+                    }
+                }
+            }
+        }
+    }
+
+    .no-data {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        min-height: 150px;
+        color: #00000080;
+        font-size: 24px;
+        font-weight: 500;
+    }
+}

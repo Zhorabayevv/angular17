@@ -1,0 +1,19 @@
+<section class="suppliers">
+    <div class="url-tabs">
+        <div class="url-tabs__content">
+            <div
+                *ngFor="let urlTab of urlTabs"
+                [class.active-tab]="urlTab.code === selectedTab"
+                [routerLink]="urlTab.code"
+                class="url-tabs__content-item"
+                (click)="onTabChange(urlTab)"
+            >
+                {{ urlTab.name | translate }}
+            </div>
+        </div>
+    </div>
+
+    <div class="suppliers__content">
+        <router-outlet></router-outlet>
+    </div>
+</section>

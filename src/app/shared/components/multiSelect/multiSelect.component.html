@@ -1,0 +1,51 @@
+<div class="multi-select" (clickOutside)="onClickOutside()">
+    <div
+        class="multi-select__header"
+        [class.is-open]="isOpen"
+        [class.is-invalid]="valueProps?.invalid && isTouched"
+        (click)="toggleSelect()"
+    >
+        <div class="multi-select__header-text">
+            <span [title]="selectedValuesNames">
+                {{ selectedValuesNames }}
+            </span>
+        </div>
+
+        <label [class.is-active]="selectedValues.length">{{ labelProps }}</label>
+        <div class="vertical-center">
+            <div *ngIf="selectedValues.length" class="multi-select__header-count">
+                {{ '+' + selectedValues.length }}
+            </div>
+            <div class="multi-select__header-actions">
+                <ng-container *ngIf="selectedValues.length">
+                    <ui-icon class="clear-value" [icon]="'xmark'" (click)="clearValue()"></ui-icon>
+                    |
+                </ng-container>
+
+                <img class="chevron-down" src="assets/icons/chevron-down.svg" alt="" />
+            </div>
+        </div>
+    </div>
+
+    <div class="multi-select__dropdown" [class.is-open-dropdown]="isOpen">
+        <ul>
+            <li *ngIf="isActiveAllProps" class="multi-select__dropdown-item" (click)="selectAll()">
+                <ui-checkbox [isChecked]="isSelectedAll"></ui-checkbox>
+                {{ 'select_all' | translate }}
+            </li>
+            <li
+                *ngFor="let item of testList"
+                class="multi-select__dropdown-item"
+                (click)="selectedItem(item)"
+            >
+                <ui-checkbox [isChecked]="isSelected(item)"></ui-checkbox>
+                {{ item.name }}
+            </li>
+        </ul>
+    </div>
+</div>
+
+<ui-validation-error
+    [isTouched]="isTouched"
+    [validatedErrors]="valueProps?.errors || null"
+></ui-validation-error>

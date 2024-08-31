@@ -1,0 +1,23 @@
+.router-navigate {
+    display: flex;
+    align-items: center;
+
+    &__route {
+        display: flex;
+        align-items: center;
+        height: 22px;
+        color: #00000073;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        cursor: pointer;
+
+        .active {
+            color: #000000e0;
+        }
+
+        .forwardslash {
+            margin: 0px 12px;
+        }
+    }
+}

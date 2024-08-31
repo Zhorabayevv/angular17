@@ -1,0 +1,31 @@
+<div class="alerts">
+    <div *ngFor="let alert of alerts; let i = index" [class]="cssClass(alert)" [@fadeInOut]="i">
+        <div class="alert-content">
+            <div class="alert__icon">
+                <ng-container [ngSwitch]="alert.type">
+                    <ng-container *ngSwitchCase="0">
+                        <ui-icon [icon]="'cloud-arrow-down'"></ui-icon>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="1">
+                        <ui-icon [icon]="'trash'"></ui-icon>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="2">
+                        <ui-icon [icon]="'cloud-arrow-down'"></ui-icon>
+                    </ng-container>
+                </ng-container>
+            </div>
+            <div class="alert__message">
+                <h3 class="alert__message-title" [title]="alert.title">
+                    {{ alert.title }}
+                </h3>
+
+                <span class="alert__message-text" [title]="alert.message">
+                    {{ alert.message }}
+                </span>
+            </div>
+            <div class="alert__close" (click)="removeAlert(alert)">
+                <ui-icon [icon]="'xmark-large'"></ui-icon>
+            </div>
+        </div>
+    </div>
+</div>

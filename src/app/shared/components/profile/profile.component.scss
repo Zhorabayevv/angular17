@@ -1,0 +1,102 @@
+.profile {
+    position: fixed;
+    z-index: 101;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+        linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+
+    &-container {
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow:
+            0px 0px 0px 0.5px #0000000d,
+            0px 0.5px 2.5px 0px #0000004d;
+    }
+
+    &-content {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 410px;
+        margin: 20px;
+        box-shadow:
+            0px 0px 3px 0px #0000001a,
+            0px 8px 40px 0px #00000040;
+        border-radius: 12px;
+        background: #fff;
+        padding: 24px 16px;
+
+        display: grid;
+        grid-template-rows: 1fr auto;
+
+        &__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            h3 {
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 28px;
+                color: #000000d9;
+            }
+
+            .close-icon {
+                cursor: pointer;
+            }
+        }
+
+        &__tabs {
+            margin: 24px 0;
+        }
+
+        &__info {
+            display: flex;
+            align-items: center;
+
+            margin-bottom: 24px;
+
+            .user-img {
+                margin-right: 16px;
+                padding: 8px 0;
+
+                img {
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 50%;
+                }
+            }
+
+            .user-content {
+                color: #000000d9;
+
+                &__title {
+                    font-size: 18px;
+                    font-weight: 500;
+                    line-height: 28px;
+                }
+
+                &__email {
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 20px;
+                }
+
+                .form-actions {
+                    margin-top: 12px;
+                }
+            }
+        }
+
+        &__action {
+            button {
+                width: 100%;
+                padding: 18px;
+            }
+        }
+    }
+}

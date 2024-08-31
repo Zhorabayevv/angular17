@@ -1,0 +1,11 @@
+{
+    "hello": "Hello",
+    "search": "Search",
+    "suppliers": "Suppliers",
+    "notification": "Notification",
+    "settings": "Settings",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "is_active": "Активный",
+    "is_not_active": "Неактивный"
+}

@@ -1,0 +1,49 @@
+<ng-container *ngIf="isTouchedProps && validatedErrorsProps">
+    <div class="validation">
+        <ng-container *ngIf="validatedErrorsProps?.['required']">
+            <small>{{ 'Обязательное поле' }}</small>
+        </ng-container>
+        <ng-container *ngIf="validatedErrorsProps?.['max']">
+            <small>
+                {{ 'required_max_number' | translate }}:
+                {{ validatedErrorsProps['max']?.max }}
+            </small>
+        </ng-container>
+        <ng-container *ngIf="validatedErrorsProps?.['minlength']">
+            <small>
+                {{ 'required_min_length' | translate }}
+                {{ validatedErrorsProps['minlength']?.requiredLength }}, {{ 'now' | translate }}
+                {{ validatedErrorsProps['minlength']?.actualLength }}
+            </small>
+        </ng-container>
+        <ng-container *ngIf="validatedErrorsProps?.['maxlength']">
+            <small>
+                {{ 'required_max_length' | translate }}
+                {{ validatedErrorsProps['maxlength']?.requiredLength }}, {{ 'now' | translate }}
+                {{ validatedErrorsProps['maxlength']?.actualLength }}
+            </small>
+        </ng-container>
+        <ng-container *ngIf="validatedErrorsProps?.['email']">
+            <small>
+                {{ 'Электронный адрес введен некорректно' | translate }}
+            </small>
+        </ng-container>
+        <ng-container *ngIf="validatedErrorsProps?.['outMinLimit']">
+            <small>
+                {{ 'min_value' | translate }}:
+                {{ validatedErrorsProps['requiredValue'] }}
+            </small>
+        </ng-container>
+        <ng-container *ngIf="validatedErrorsProps?.['outMaxLimit']">
+            <small>
+                {{ 'max_value' | translate }}:
+                {{ validatedErrorsProps['requiredValue'] }}
+            </small>
+        </ng-container>
+        <ng-container *ngIf="validatedErrorsProps?.['confirmPasswordMismatch']">
+            <small>
+                {{ 'Пароли не совпадают' | translate }}
+            </small>
+        </ng-container>
+    </div>
+</ng-container>

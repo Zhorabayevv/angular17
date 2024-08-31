@@ -1,0 +1,12 @@
+<button
+    class="main-btn button"
+    [ngClass]="{
+        'btn-primary': typeProps === 'primary',
+        'btn-secondary': typeProps === 'secondary',
+        'btn-danger': typeProps === 'danger'
+    }"
+    [disabled]="disabledProps"
+>
+    <ui-icon *ngIf="iconProps" [icon]="iconProps" class="button__icon"></ui-icon>
+    {{ labelProps }}
+</button>

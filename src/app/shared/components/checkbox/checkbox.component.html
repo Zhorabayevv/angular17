@@ -1,0 +1,9 @@
+<div class="checkbox-wrapper" (click)="onToggle()">
+    <div [class.is-checked]="isCheckedProps || activeMinusProps" class="checkbox">
+        <ui-icon *ngIf="isCheckedProps && !activeMinusProps" [icon]="'check'"></ui-icon>
+        <ui-icon *ngIf="activeMinusProps" [icon]="'minus'"></ui-icon>
+    </div>
+    <div *ngIf="labelProps" class="checkbox-label">
+        {{ labelProps }}
+    </div>
+</div>

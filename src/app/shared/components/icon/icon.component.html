@@ -1,0 +1,9 @@
+<i
+    *ngIf="!iconProps.includes('.'); else imgTemplate"
+    [ngClass]="[iconProps, degProps]"
+    class="icon"
+    [ngStyle]="styleObject()"
+></i>
+<ng-template #imgTemplate>
+    <img [ngClass]="[degProps]" class="icon img" [src]="'assets/images/' + iconProps" />
+</ng-template>

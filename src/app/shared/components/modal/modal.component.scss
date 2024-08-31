@@ -1,0 +1,103 @@
+.modal {
+    position: fixed;
+    z-index: 9;
+    left: 0;
+    top: 0;
+    background: #0000005a;
+    width: 100%;
+    min-height: 100vh;
+    transition: display 0.5s ease;
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    &__content {
+        position: relative;
+        min-width: 5rem;
+        max-width: 500px;
+        width: auto;
+        min-height: 5rem;
+        height: auto;
+        background: white;
+        padding: 1.25rem;
+        border-radius: 0.5rem;
+    }
+
+    &__close-icon {
+        width: fit-content;
+        position: absolute;
+        right: 1.25rem;
+        cursor: pointer;
+    }
+
+    &__title {
+        padding: 0 1.5rem 1rem 0;
+        font-weight: 600;
+        font-size: 1.2rem;
+        border-bottom: solid 0.1rem rgba(230, 230, 230, 1);
+    }
+
+    &__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+
+        &-icon {
+            width: 3.5rem;
+            height: 4rem;
+            background-color: #000;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            -webkit-mask-size: contain;
+        }
+
+        &-title {
+            padding: 0.5rem 0;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        &-text {
+            width: 100%;
+            max-width: 23rem;
+            padding: 0 0 0.5rem;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    &__buttons {
+        width: 100%;
+        padding: 0.5rem 0 0;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+
+        &.smaller {
+            float: right;
+            width: auto;
+            max-width: 60%;
+        }
+
+        &-btn {
+            display: inline-flex;
+            width: 48%;
+        }
+    }
+
+    &__checkbox {
+        padding: 0.5rem 0 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    &-open {
+        display: flex;
+    }
+}

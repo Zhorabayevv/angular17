@@ -1,0 +1,112 @@
+.theme-switcher {
+    width: 3.8rem;
+    height: 2rem;
+    padding: 0.2rem;
+    position: relative;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 1rem;
+
+    &.light {
+        background: rgba(255, 230, 181, 1);
+        animation-timing-function: ease;
+        animation: toLightTheme 400ms;
+    }
+
+    &.dark {
+        background: rgba(125, 143, 169, 1);
+        animation-timing-function: ease;
+        animation: toDarkTheme 400ms;
+    }
+
+    &.default {
+        animation: none;
+    }
+
+    &__span {
+        height: 100%;
+        width: 46%;
+        border-radius: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+    }
+
+    &__icon {
+        height: 85%;
+        width: 46%;
+    }
+
+    .circle {
+        height: 1.6rem;
+        width: 1.6rem;
+        margin: 0.2rem;
+        position: absolute;
+        border-radius: 1rem;
+        animation-timing-function: ease;
+
+        &.toDark {
+            left: 1.8rem;
+            background: rgba(59, 71, 88, 1);
+            animation: toDark 400ms;
+
+            &.default {
+                left: 1.8rem;
+                animation: none;
+            }
+        }
+
+        &.toLight {
+            left: 0.000001rem;
+            background: rgba(255, 170, 4, 1);
+            animation: toLight 400ms;
+
+            &.default {
+                left: 0;
+                animation: none;
+            }
+        }
+    }
+}
+
+@keyframes toDark {
+    from {
+        left: 0;
+        background: rgba(255, 170, 4, 1);
+    }
+    to {
+        left: 1.8rem;
+        background: rgba(59, 71, 88, 1);
+    }
+}
+
+@keyframes toLight {
+    from {
+        left: 1.8rem;
+        background: rgba(59, 71, 88, 1);
+    }
+    to {
+        left: 0;
+        background: rgba(255, 170, 4, 1);
+    }
+}
+
+@keyframes toDarkTheme {
+    from {
+        background: rgba(255, 230, 181, 1);
+    }
+    to {
+        background: rgba(125, 143, 169, 1);
+    }
+}
+
+@keyframes toLightTheme {
+    from {
+        background: rgba(125, 143, 169, 1);
+    }
+    to {
+        background: rgba(255, 230, 181, 1);
+    }
+}
